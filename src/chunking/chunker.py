@@ -10,7 +10,7 @@ class StructuralChunker:
         self.strategy = strategy
         self.size = size
         self.overlap = overlap
-        self.tokenizer = AutoTokenizer.from_pretrained("gpt-2")
+        self.tokenizer = AutoTokenizer.from_pretrained("gpt2")
 
     def chunk_text(self, text: str) -> List[Dict[str, Any]]:
         tokens = self.tokenizer.encode(text)

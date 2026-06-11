@@ -3,24 +3,25 @@ experiment:
   seed: 42
   output_dir: "results"
   token_budgets: [500, 1000]
-  ablation_passes: [1, 2] # Kept small initially to stay safely within Free Tier limits
+  ablation_passes: [1, 2]
 
 dataset:
-  family: "gutenberg"
+  family: "arxiv"
+  search_query: "LLM context compression architecture" # <-- ADD THIS LINE
   sample_size: 1
-  max_doc_length_tokens: 5000
+  max_doc_length_tokens: 8000
 
 chunking:
   strategy: "recursive"
-  size: 2048 # Increased size slightly to execute fewer individual API calls
+  size: 2048
   overlap: 256
 
 model:
-  provider: "google"
-  name: "gemini-2.5-flash"
+  provider: "ollama"
+  name: "llama3.2:1b"
   temperature: 0.0
   max_tokens: 2048
 
 evaluation:
-  num_questions_per_doc: 10
-  llm_judge_model: "gemini-2.5-flash"
+  num_questions_per_doc: 15
+  llm_judge_model: "llama3.2:1b"
