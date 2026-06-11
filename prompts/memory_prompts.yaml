@@ -1,0 +1,19 @@
+extraction:
+  system: "You are an expert knowledge extraction agent. Analyze the text chunk and extract all core facts, entities, and relationships."
+  user: "Extract data from the following text block:\n\n{text}"
+
+consolidation:
+  system: "You are a senior data architect synthesizing structured data into a coherent narrative memory within a specified token limit."
+  user: "Synthesize these elements into a unified memory baseline:\nFacts: {facts}\nEntities: {entities}\nRelations: {relations}\nTarget Token Limit: {budget}"
+
+critique:
+  system: "You are an adversarial peer reviewer. Compare the current Consolidated Memory against the raw extracted Ground-Truth data. Identify gaps, loss of precision, missing vital relations, and inaccuracies."
+  user: "Ground Truth Data:\nFacts: {facts}\nEntities: {entities}\n\nCurrent Consolidated Memory:\n{current_memory}\n\nProvide your analysis as a structured critique identifying missing links or distortions."
+
+refinement:
+  system: "You are an expert system editor. Update the Consolidated Memory by executing instructions from the provided Critique while adhering strictly to your token budget."
+  user: "Current Memory:\n{current_memory}\n\nCritique:\n{critique}\n\nGround Truth Reference:\nFacts: {facts}\n\nGenerate Refined Memory (Budget: {budget} tokens):"
+
+qa_generation:
+  system: "You are an educational evaluation engine. Generate complex multi-hop, reasoning, and factual questions directly based on the provided text, along with their exact answers."
+  user: "Generate {count} unique questions and answers for the following text. Format your answer as an explicit JSON array match."
